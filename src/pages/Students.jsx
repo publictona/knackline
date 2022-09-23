@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 
 const Students = () => {
 
-const [Students, setStudents] = useState([]);
+  const [Students, setStudents] = useState([]);
 
   useEffect(() => {
     const fetchAllStudents = async () => {
@@ -36,19 +36,19 @@ const [Students, setStudents] = useState([]);
   return (
     <div >
 
-    <h1>Students Details</h1>
+      <h1>Students Details</h1>
       <div className="students">
         {Students.map((student) => (
           <div key={student.id} className="student">
-             <h3>{student.name}</h3>
-            
-             <button className="delete" onClick={() => handleDelete(student.id)}  >delete</button>
-             <button className="update">
-               <Link
-                 to={`/update/${student.id}`}
-                 style={{ color: "inherit", textDecoration: "none" }}
+            <h3>{student.name}</h3>
+
+            <button className="delete" onClick={() => handleDelete(student.id)}  >delete</button>
+            <button className="update">
+              <Link
+                to={`/update/${student.id}`}
+                style={{ color: "inherit", textDecoration: "none" }}
               >
-                Update 
+                Update
               </Link>
             </button>
           </div>
@@ -56,11 +56,11 @@ const [Students, setStudents] = useState([]);
       </div>
 
       <Button className="addHome">
-        <Link to="/add" style={{ color: "inherit", textDecoration: "none"}}>
+        <Link to="/add" style={{ color: "inherit", textDecoration: "none" }}>
           Add new student
         </Link>
       </Button>
-    </div> 
+    </div>
   );
 };
 
