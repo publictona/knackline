@@ -1,13 +1,16 @@
 import express from "express";
 import mysql from "mysql";
 import cors from "cors";
+//var bcrypt = require('bcryptjs');
+//import postRoutes from './routes/post.js'
+
 
 const app = express();
 app.use(cors());
 
 app.use(express.json());
 
-const db = mysql.createConnection({
+ const db = mysql.createConnection({
   host: 'localhost',
   user:'root',
   password: "sushma@123",
@@ -15,8 +18,65 @@ const db = mysql.createConnection({
 });
 
 
-//=====================<get student api>==================================
-app.get("/user", (req,res)=>{
+
+//---------------routes----------------------------
+// app.use('/',postRoutes)
+
+app.post("/register", (req,res)=>{
+  //check user exist
+    const q = "SELECT * FROM users WHERE Emailid = ?"
+
+    
+    // var salt = bcrypt.genSaltSync(10);
+    // var hash = bcrypt.hashSync("B4c0/\/", salt);
+
+    db.query(q, [req.body.Emailid], (err, data) => {
+        if (err) return res.json(err);
+        if (data.length) {
+            return res.status(409).json("Email already exist")
+        }
+
+ const q =  "INSERT INTO users(`Username` ,`Emailid` ,`Password`) VALUES (?)";
+        const values = [
+            req.body.Username,
+            req.body.Emailid,
+            req.body.Password,
+        ];
+
+        db.query(q, [values], (err, data) => {
+            if (err) return res.json(err);
+            return res.status(200).json("User created succesfully");
+
+        });
+    });
+});
+
+
+//=====================<create student api>==================================
+app.post("/login", (req, res) => {
+  //check email id
+  const q = "SELECT * FROM users WHERE Emailid = ?";
+
+  db.query(q, [req.body.Emailid ], (err, data) => {
+    if (err) return res.json(err);
+    if (data.length === 0) {
+        return res.status(404).json("User not found");
+    }
+    //check password
+    const isPasswordCorrect = bcrypt.compareSync(req.body.Password , data[0].Password); // true
+    if(!isPasswordCorrect) return res.status(400).json("Wrong username or password")
+
+    const tokan = jwt.sign({id:data[0].id} , "jwtkey");
+    const [Password , ...other] =data[0];
+    res.cookie("access_tokan",tokan ,{
+      httpOnly:true
+    }).status(200).json(data[0])
+
+    });
+   });
+
+   //========================================================
+   app.get("/user", (req,res)=>{
     const q = "SELECT * FROM user.users";
     db.query(q, (err, data)=>{
         if(err) return res.json(err)
@@ -25,22 +85,28 @@ app.get("/user", (req,res)=>{
     })
    })
 
-//=====================<create student api>==================================
-app.post("/user", (req, res) => {
-  const q = "INSERT INTO users(`Username` ,`Emailid` ,`Password`) VALUES (?)";
+   //===============================================================
+   app.get("/user/:id", (req,res)=>{
+    const userId = req.params.id;
+    const q = "SELECT * FROM user.users";
+    const values = [
+      req.body.Username,
+      req.body.Password,
+     ];
+    
+    db.query(q, [ ...values , userId],(err, data)=>{
+        if(err) return res.send(err)
+        return res.json(data)
 
-  const values = [
-    req.body.Username,
-    req.body.Emailid,
-    req.body.Password,
-  ];
+    })
+   })
 
-  db.query(q, [values], (err, data) => {
-    if (err) return res.json(err);
-    return res.json("user created succesfully");
-  });
-});
+   
 
+
+
+
+  
 
 //=====================<update student api>==================================
 app.put("/user/:id", (req, res) => {

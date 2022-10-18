@@ -38,6 +38,7 @@ const Students = () => {
 
       <h1>Students Details</h1>
       <div className="students">
+        
         {Students.map((student) => (
           <div key={student.id} className="student">
             <h3>{student.name}</h3>

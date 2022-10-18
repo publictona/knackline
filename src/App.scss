@@ -52,11 +52,15 @@ $lightGreen: #b9e7e7;
         padding: 10px;
         margin-top: 10px;
         border: none;
-        background-color: orange;
+        background-color: rgb(236, 125, 56);
         cursor: pointer;
         color: white;
         
 
+      }
+
+      button:hover{
+      background-color: rgb(184, 233, 217);
       }
 
       p{
@@ -72,6 +76,7 @@ $lightGreen: #b9e7e7;
 
   .container nav{
     padding: 10px 0px;
+    position:static;
     width:100%;
   height: 70px;
   background-color: rgb(239, 143, 143);
@@ -89,8 +94,8 @@ $lightGreen: #b9e7e7;
     color: white;
   }
   .nav-link:hover{
-    color: rgb(212, 78, 100);
-    margin-left: 100px;
+    color: rgb(222, 23, 57);
+   
   }
   
 
