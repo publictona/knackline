@@ -28,8 +28,8 @@ const AddUser = () => {
       await axios.post("http://localhost:8800/adduser", data);
       navigate("/");
     } catch (err) {
-      console.log(err);
-      setError(true)
+      
+      setError(err.response.data)
     }
   };
 
@@ -45,7 +45,7 @@ const AddUser = () => {
         <input type='password' placeholder='enter password' name="Password" onChange={handleChange}/>
         <input type='password' placeholder='confirm password' name="Comfirmpassword" onChange={handleChange} />
         <button  onClick={handleClick} className = 'btn btn-outline-primary'> submit</button>
-        {err && "Something went wrong!"}
+        {err && <p> {err}</p>}
         <Link  className='btn btn-primary' to="/">See all Users</Link>
       </form>
     </div>

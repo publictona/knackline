@@ -85,6 +85,17 @@ app.post("/login", (req, res) => {
 
    //==========================<add new user>======================================
    app.post("/adduser", (req, res) => {
+
+
+    const q = "SELECT * FROM users WHERE Emailid = ?"
+
+    db.query(q, [req.body.Emailid], (err, data) => {
+        if (err) return res.json(err);
+        if (data.length) {
+            return res.status(409).json("Email already exist")
+        }
+
+
     const q = "INSERT INTO users(`Username` ,`Emailid` ,`Password` ,`Comfirmpassword` ) VALUES (?)";
   
     const values = [
@@ -100,7 +111,7 @@ app.post("/login", (req, res) => {
     });
   });
   
-
+});
 //=============================<get user details by id>==================================
    app.get("/user/:id", (req,res)=>{
     const userId = req.params.id;
