@@ -1,9 +1,9 @@
 import React from 'react'
-import {Link , NavLink} from 'react-router-dom'
+import {Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-<div className='container-nav'  >
+<div className='container'  >
         <nav className="navbar navbar-expand-lg ">
   <div className="container-fluid">
     <a className="navbar-brand" href="#"> <i class="fa fa-user" aria-hidden="true"></i></a>

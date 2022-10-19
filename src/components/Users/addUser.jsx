@@ -12,7 +12,7 @@ const AddUser = () => {
   });
 
   //error
-  const [error, setError] = useState(false)
+  const [err, setError] = useState(false)
   //redirect page
   const navigate = useNavigate();
 
@@ -40,12 +40,12 @@ const AddUser = () => {
       
       <h1>Add New User</h1>
       <form>
-      <input type='text' placeholder='enter name'  name="Username" onChange={handleChange}/>
+      <input type='text' placeholder='enter name'  name="Username" onChange={handleChange} />
         <input type='email' placeholder='enter email address' name="Emailid"  onChange={handleChange}/>
         <input type='password' placeholder='enter password' name="Password" onChange={handleChange}/>
-        <input type='password' placeholder='confirm password' name="Comfirmpassword" onChange={handleChange}/>
+        <input type='password' placeholder='confirm password' name="Comfirmpassword" onChange={handleChange} />
         <button  onClick={handleClick} className = 'btn btn-outline-primary'> submit</button>
-        {error && "Something went wrong!"}
+        {err && "Something went wrong!"}
         <Link  className='btn btn-primary' to="/">See all Users</Link>
       </form>
     </div>
