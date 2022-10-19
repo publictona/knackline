@@ -62,7 +62,8 @@ app.post("/login", (req, res) => {
     const isPasswordCorrect = bcrypt.compareSync(req.body.Password , data[0].Password); // true
     if(!isPasswordCorrect) return res.status(400).json("Wrong username or password");
 
-   //generate tokan
+   
+    //generate tokan
     const tokan = jwt.sign({  id: data[0].id } , "jwtkey");
     const {Password , ...other} = data[0];
     res.cookie("access_tokan" , tokan , {
