@@ -21,14 +21,23 @@ const Updateuser = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-
-    try {
+   try {
       await axios.put(`http://localhost:8800/user/${userId}`, data);
       navigate("/");
     } catch (err) {
       setError(err.response.data)
     }
   };
+
+  //===========================================================
+  const checkComfirmPassValidation = (e) =>{
+    setData(e.target.value);
+    if("Password"!= "Comfirmpassword"){
+      setError("comfirm Password should be match with password ")
+    }else{
+      setError("");
+    }
+  }
 
   return (
     <div className='auth'>
@@ -37,7 +46,7 @@ const Updateuser = () => {
     <form>
     <input type='text' placeholder='enter name' onChange={handleChange} name="Username"/>
       <input type='password' placeholder='enter password'onChange={handleChange} name="Password"/>
-      <input type='password'  placeholder='confirm password'  onChange={handleChange}   name="Comfirmpassword" />
+      <input type='password'  placeholder='confirm password' onChange={(e)=>checkComfirmPassValidation(e)}   name="Comfirmpassword" />
       <button className = 'btn btn-outline-primary' onClick={handleClick}> submit</button>
       {err && <p> {err}</p>}
     </form>

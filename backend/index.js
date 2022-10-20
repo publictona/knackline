@@ -95,39 +95,34 @@ app.post("/login", (req, res) => {
             return res.status(409).json("Email already exist")
         }
 
-
     const q = "INSERT INTO users(`Username` ,`Emailid` ,`Password` ,`Comfirmpassword` ) VALUES (?)";
-  
     const values = [
       req.body.Username,
       req.body.Emailid,
       req.body.Password,
       req.body.Comfirmpassword,
     ];
-  
+   
     db.query(q, [values], (err, data) => {
       if (err) return res.json(err);
-      return res.json("student created succesfully");
+      return res.json("user created succesfully");
     });
   });
-  
-});
+})
+
 //=============================<get user details by id>==================================
    app.get("/user/:id", (req,res)=>{
-    const userId = req.params.id;
-    const q = "SELECT * FROM user.users  ";
-    const values = [
-      req.body.Username,
-      req.body.Emailid,
-     ];
-    
-    db.query(q, [ ...values ,userId ],(err, data)=>{
+   const {id} = req.params  
+    const q = "SELECT * FROM users WHERE id = ? ";
+    db.query(q, [ id ],(err, data)=>{
         if(err) return res.send(err)
         return res.json(data)
 
     })
    })
 
+
+  
    //=====================<update student api>==================================
 app.put("/user/:id", (req, res) => {
   const userId = req.params.id;

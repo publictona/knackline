@@ -8,20 +8,24 @@ const AddUser = () => {
   const [data, setData] = useState({
     Username: "",
     Emailid: "",
+    Password:"",
+    Comfirmpassword:"",
+    
   
   });
-
-  //error
+  
+//error show
   const [err, setError] = useState(false)
+  
   //redirect page
   const navigate = useNavigate();
 
   
-
+//=============================================================
   const handleChange = (e) => {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
+//=============================================================
   const handleClick = async (e) => {
     e.preventDefault();
     try {
@@ -33,6 +37,17 @@ const AddUser = () => {
     }
   };
 
+
+//=========================================================
+const checkComfirmPassValidation = (e) =>{
+  setData(e.target.value);
+  if("Password"!= "Comfirmpassword"){
+    setError("comfirm Password should be match with password ")
+  }else{
+    setError("");
+  }
+}
+//=======================================================
   return (
     <div className='container'>
       
@@ -43,7 +58,8 @@ const AddUser = () => {
       <input type='text' placeholder='enter name'  name="Username" onChange={handleChange} />
         <input type='email' placeholder='enter email address' name="Emailid"  onChange={handleChange}/>
         <input type='password' placeholder='enter password' name="Password" onChange={handleChange}/>
-        <input type='password' placeholder='confirm password' name="Comfirmpassword" onChange={handleChange} />
+        <input type='password' placeholder='confirm password' name="Comfirmpassword" onChange={(e)=>checkComfirmPassValidation(e)} />
+       
         <button  onClick={handleClick} className = 'btn btn-outline-primary'> submit</button>
         {err && <p> {err}</p>}
         <Link  className='btn btn-primary' to="/">See all Users</Link>
