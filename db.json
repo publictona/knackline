@@ -1,0 +1,74 @@
+{
+  "user": [
+    {
+      "id": "1",
+      "name": "rani",
+      "password": "Sushma",
+      "email": "piya@gmail.com",
+      "phone": "8668873234",
+      "cPassword": "Sushma",
+      "profile": "C:\\fakepath\\sushma.jpg",
+      "gender": "female"
+    },
+    {
+      "id": "1",
+      "name": "gyani",
+      "password": "Sushma",
+      "email": "piya@gmail.com",
+      "phone": "8668873234",
+      "cPassword": "Sushma",
+      "profile": "C:\\fakepath\\sushma.jpg",
+      "gender": "female"
+    },
+    {
+      "id": "1",
+      "name": "Sushma Landge",
+      "password": "Sushma",
+      "email": "piya@gmail.com",
+      "phone": "8668873234",
+      "cPassword": "Sushma",
+      "profile": "C:\\fakepath\\sushma.jpg",
+      "gender": "female"
+    },
+    {
+      "id": "1",
+      "name": "manu",
+      "password": "Sushma",
+      "email": "piya@gmail.com",
+      "phone": "8668873234",
+      "cPassword": "Sushma",
+      "profile": "C:\\fakepath\\sushma.jpg",
+      "gender": "female"
+    },
+    {
+      "id": "1",
+      "name": "tanu",
+      "password": "Sushma",
+      "email": "piya@gmail.com",
+      "phone": "8668873234",
+      "cPassword": "Sushma",
+      "profile": "C:\\fakepath\\sushma.jpg",
+      "gender": "female"
+    },
+    {
+      "id": "1",
+      "name": " Landge",
+      "password": "Sushma",
+      "email": "piya@gmail.com",
+      "phone": "8668873234",
+      "cPassword": "Sushma",
+      "profile": "C:\\fakepath\\sushma.jpg",
+      "gender": "female"
+    },
+    {
+      "id": "2",
+      "name": "Sushma Landge",
+      "password": "Sush",
+      "email": "janua2@gmail.com",
+      "phone": "8668873234",
+      "cPassword": "Sush",
+      "profile": "C:\\fakepath\\CRPF ASI (Draughtsman) Official Paper (Held On_ 30 Jul 2017) (English).pdf",
+      "gender": "male"
+    }
+  ]
+}
