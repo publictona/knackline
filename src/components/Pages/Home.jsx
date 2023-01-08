@@ -12,11 +12,8 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [value, setValue] = useState();
   const [sortValue, setSortValue] = useState("");
-  const [currPage, setCurrPage] = useState(0);
-  const [pageLimit, setPageLimit] = useState(5);
-
-
-  //sort
+  
+//sort
   var sortOption = ["name", "email", "phone", "gender"];
 
   useEffect(() => {
@@ -58,24 +55,6 @@ const Home = () => {
       .catch((err) => console.log(err))
   };
 
-
-
-  //pagination
-  // const pagination = async (e) =>{
-  //   if(currPage === 0){
-  //     return(
-  //       <h1>gi</h1>
-
-  //     )
-  //   }
-  //   return await axios
-  //   .get(`http://localhost:8000/user?q=${value}&_order=asc`)
-  //   .then((response) => {
-  //     setData(response.data)
-  //   })
-  //     .catch((err) => console.log(err))
-  // };
-
   const handleDelete = async (id) => {
     try {
       window.alert("Are You sure that delete this user")
@@ -92,11 +71,6 @@ const Home = () => {
 
   return (
     <>
-
-
-
-      {/* ======================================= */}
-
       <form style={{
         margin: "auto",
         padding: "15px",
@@ -145,7 +119,7 @@ const Home = () => {
           </tr>
         </thead>
       </table>
-{/* ============================== */}
+      {/* ============================== */}
 
 
       <h2 className='text-center' >User Management</h2>
@@ -187,10 +161,7 @@ const Home = () => {
         <Page />
 
       </div>
-
-
-
-      </>
+   </>
 
   )
 }

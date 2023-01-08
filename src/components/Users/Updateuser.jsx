@@ -64,7 +64,7 @@ const Updateuser = () => {
                 body: JSON.stringify(regobj)
             }).then((res) => {
                 toast.success('update successfully.')
-                navigate('/home');
+                navigate('/');
             }).catch((err) => {
                 toast.error('Failed :' + err.message);
             });

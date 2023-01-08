@@ -29,7 +29,7 @@ sessionStorage.clear();
                     if (resp.password === password) {
                         toast.success('Success');
                         sessionStorage.setItem('email',email);
-                        usenavigate('/home')
+                        usenavigate('/')
                     }else{
                         toast.error('Please Enter valid credentials');
                     }
