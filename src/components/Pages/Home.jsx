@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react'
-import { Link,  } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
 import { Button } from '@mui/material'
 import { color } from '@mui/system';
 import Page from '../Pagination';
@@ -17,19 +17,19 @@ const Home = () => {
 
 
   //sort
-var sortOption = [ "name", "email", "phone", "gender"];
+  var sortOption = ["name", "email", "phone", "gender"];
 
-useEffect(() => {
-  loadUserData(0,5,0);
-}, []);
+  useEffect(() => {
+    loadUserData(0, 5, 0);
+  }, []);
 
-const loadUserData = async (start , end , increse) => {
-  return await axios
-    .get(`http://localhost:8000/user?_start=${start}&_end=${end}`)
-    .then((response) => setData(response.data))
-    .catch((err) => console.log(err))
-};
-console.log("data", data)
+  const loadUserData = async (start, end, increse) => {
+    return await axios
+      .get(`http://localhost:8000/user?_start=${start}&_end=${end}`)
+      .then((response) => setData(response.data))
+      .catch((err) => console.log(err))
+  };
+  console.log("data", data)
 
   //search data
 
@@ -58,7 +58,7 @@ console.log("data", data)
       .catch((err) => console.log(err))
   };
 
-  
+
 
   //pagination
   // const pagination = async (e) =>{
@@ -92,10 +92,10 @@ console.log("data", data)
 
   return (
     <>
-    
 
 
-{/* ======================================= */}
+
+      {/* ======================================= */}
 
       <form style={{
         margin: "auto",
@@ -146,10 +146,10 @@ console.log("data", data)
                     <td>{item.phone}</td>
                     <td>{item.gender}</td>
                     <td >
-                   
-                    <Link className='btn btn-success m-2 ' to={`/update/${item.id}`}><i class="fa fa-pencil-square" aria-hidden="true"></i></Link>
-                    <Link className='btn btn-danger m-2' onClick={() => handleDelete(item.id)}><i class="fa fa-trash" aria-hidden="true"></i></Link>
-                  </td>
+
+                      <Link className='btn btn-success m-2 ' to={`/update/${item.id}`}><i class="fa fa-pencil-square" aria-hidden="true"></i></Link>
+                      <Link className='btn btn-danger m-2' onClick={() => handleDelete(item.id)}><i class="fa fa-trash" aria-hidden="true"></i></Link>
+                    </td>
                   </tr>
                 )
               })
@@ -157,39 +157,39 @@ console.log("data", data)
           </tbody>
         </table>
         {/* pagination */}
-        <Page/>
-      
+        <Page />
+
       </div>
 
-      
+
 
       <table>
-      <thead>
-        <tr>
-        <th size="8">
-        <h5 style={{marginLeft:"40px", color:"gray"}}>Sort By:</h5>
-          <select style={{ width: "90%", borderRadius: "3px", height: "35px", mt: "40px", marginLeft: "40px" }}
-            onChange = {handleSort}
-            value = {sortValue}
-          >
-            <option>Please select value</option>
-            <option>name</option>
-            <option>email</option>
-            <option>phone</option>
-            <option>gender</option>
-            
-            {
-             sortOption.map((item , index) => {
-              <option value = {item} key={index} >{item}</option>
-                })}
-           
-          </select>
-        </th>
-      </tr>
+        <thead>
+          <tr>
+            <th size="8">
+              <h5 style={{ marginLeft: "40px", color: "gray" }}>Sort By:</h5>
+              <select style={{ width: "90%", borderRadius: "3px", height: "35px", mt: "40px", marginLeft: "40px" }}
+                onChange={handleSort}
+                value={sortValue}
+              >
+                <option>Please select value</option>
+                <option>name</option>
+                <option>email</option>
+                <option>phone</option>
+                <option>gender</option>
+
+                {
+                  sortOption.map((item, index) => {
+                    <option value={item} key={index} >{item}</option>
+                  })}
+
+              </select>
+            </th>
+          </tr>
         </thead>
       </table>
 
-       
+
 
     </>
 
