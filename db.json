@@ -2,16 +2,6 @@
   "user": [
     {
       "id": "1",
-      "name": "rani",
-      "password": "Sushma",
-      "email": "piya@gmail.com",
-      "phone": "8668873234",
-      "cPassword": "Sushma",
-      "profile": "C:\\fakepath\\sushma.jpg",
-      "gender": "female"
-    },
-    {
-      "id": "1",
       "name": "gyani",
       "password": "Sushma",
       "email": "piya@gmail.com",

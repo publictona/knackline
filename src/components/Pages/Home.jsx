@@ -120,6 +120,33 @@ const Home = () => {
 
       {/* ==================== */}
 
+      <table>
+        <thead>
+          <tr>
+            <th size="8">
+              <h5 style={{ marginLeft: "40px", color: "gray" }}>Sort By:</h5>
+              <select style={{ width: "90%", borderRadius: "3px", height: "35px", mt: "40px", marginLeft: "40px" }}
+                onChange={handleSort}
+                value={sortValue}
+              >
+                <option>Please select value</option>
+                <option>name</option>
+                <option>email</option>
+                <option>phone</option>
+                <option>gender</option>
+
+                {
+                  sortOption.map((item, index) => {
+                    <option value={item} key={index} >{item}</option>
+                  })}
+
+              </select>
+            </th>
+          </tr>
+        </thead>
+      </table>
+{/* ============================== */}
+
 
       <h2 className='text-center' >User Management</h2>
       <div className='container border shadow'>
@@ -163,35 +190,7 @@ const Home = () => {
 
 
 
-      <table>
-        <thead>
-          <tr>
-            <th size="8">
-              <h5 style={{ marginLeft: "40px", color: "gray" }}>Sort By:</h5>
-              <select style={{ width: "90%", borderRadius: "3px", height: "35px", mt: "40px", marginLeft: "40px" }}
-                onChange={handleSort}
-                value={sortValue}
-              >
-                <option>Please select value</option>
-                <option>name</option>
-                <option>email</option>
-                <option>phone</option>
-                <option>gender</option>
-
-                {
-                  sortOption.map((item, index) => {
-                    <option value={item} key={index} >{item}</option>
-                  })}
-
-              </select>
-            </th>
-          </tr>
-        </thead>
-      </table>
-
-
-
-    </>
+      </>
 
   )
 }
